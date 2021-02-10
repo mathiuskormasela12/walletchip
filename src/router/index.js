@@ -15,6 +15,7 @@ import Register from '../views/auth/Register'
 import Forgot from '../views/auth/Forgot'
 import CreatePin from '../views/auth/CreatePin'
 import Activated from '../views/auth/Activated'
+import ResetPassword from '../views/auth/ResetPass'
 
 function Router() {
   return (
@@ -25,24 +26,19 @@ function Router() {
         </NavbarLanding>
       </Route>
       <Route path="/auth/login" exact>
-        <AuthLayout>
-          <Login />
-        </AuthLayout>
+        <Login />
       </Route>
       <Route path="/auth/register">
-        <AuthLayout>
-          <Register />
-        </AuthLayout>
+        <Register />
       </Route>
-      <Route path="/auth/forgot">
-        <AuthLayout>
+      <Route exact path="/auth/forgot">
           <Forgot />
-        </AuthLayout>
       </Route>
       <Route path="/auth/create-pin">
-        <AuthLayout>
-          <CreatePin />
-        </AuthLayout>
+        <CreatePin />
+      </Route>
+      <Route path="/auth/forgot/reset-password">
+        <ResetPassword />
       </Route>
       <Route path="/auth/activated">
         <AuthLayout>

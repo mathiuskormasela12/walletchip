@@ -1,10 +1,14 @@
 import React from 'react'
+import { AuthLayout } from '../../../components'
 
 function Activated() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <div className="row vw-100">
+        <AuthLayout />
+        {/* <RegisterForm /> */}
+      </div>
+    </>
   )
 }
 
