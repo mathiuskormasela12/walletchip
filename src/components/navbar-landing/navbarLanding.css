@@ -1,0 +1,43 @@
+nav {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  transition: 0.4s;
+}
+
+.smaller-nav {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  background-color: white !important;
+}
+
+.smaller-nav .btn:hover {
+  color: white !important;
+}
+
+.nav-item > .btn {
+  width: 105px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.nav-item > .btn:hover {
+  color: var(--primary);
+}
+
+.nav-item > .btn-light {
+  color: var(--primary);
+}
+
+.img-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+.personal-info > small {
+  font-size: 12px;
+}
+
+.personal-info > h6 {
+  font-size: 16px;
+}
