@@ -1,0 +1,9 @@
+.pin-form-costum {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 53px !important;
+    height:  65px !important;
+    padding-left: 20px;
+    border-radius: 10px;
+    border: 1.5px solid #A9A9A9;
+}

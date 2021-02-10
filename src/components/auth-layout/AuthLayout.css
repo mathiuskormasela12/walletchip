@@ -1,0 +1,17 @@
+.bg-theme {
+    background-color: #6379F4 !important; 
+    background-image: url('../../assets/images/bg-layout-walletchip.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.walletchip-logo {
+    height: 40px !important;
+    width: auto;
+}
+
+.review-app-photo {
+    height: 350px;
+    width: auto;
+    margin-top: 50px;
+}

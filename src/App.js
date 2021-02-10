@@ -14,6 +14,9 @@ import Router from './router'
 // State Management
 import persistedStore from './redux/store'
 
+//import main css
+import './assets/css/App.css'
+
 function App() {
   const {store, persistor} = persistedStore()
   return (
