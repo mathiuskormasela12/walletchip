@@ -2,13 +2,6 @@ import React from 'react'
 import './PinForm.css'
 
 export function PinForm() {
-
-  const pinHandler = (e) => {
-    console.log(e.target.nextElementSibling)
-    let focus = 'focus'
-    e.target.nextElementSibling.setAttribute('auto' + focus.charAt(0).toUpperCase() + focus.slice(1), true)
-  }
-
   return (
     <>
       <div className="col-lg-6">
@@ -34,7 +27,7 @@ export function PinForm() {
                     [1,2,3,4,5,6].map((element, index) => {
                       return (
                         <React.Fragment key={String(index)}>
-                          <input onChange={pinHandler} type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id={element} />
+                          <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id={element} />
                         </React.Fragment>
                       )
                     })
