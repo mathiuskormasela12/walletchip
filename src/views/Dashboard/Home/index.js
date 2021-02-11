@@ -52,9 +52,9 @@ function Home() {
         </div>
       </div>
       <div className="row mt-4">
-        <div className="card shadow-sm">
-          <div className="card-body">
-            <div className="row my-2">
+        <div className="card shadow-sm ">
+          <div className="card-head">
+          <div className="row my-4 px-3">
               <div className="d-flex justify-content-between">
                 <span className="fw-bold">
                   Transaction History
@@ -63,12 +63,14 @@ function Home() {
                   See all
                 </span>
               </div>
-            </div>
+            </div>            
+          </div>
+          <div className="card-body overflow-auto card-transaction-history">
             {
               [1, 2, 3, 4].map(transaction => {
                 return (
                   <>
-                   <div className="row my-3" key={String(transaction)}>
+                   <div className="row my-1" key={String(transaction)}>
                     <div className="card">
                       <div className="card-body">
                         <div className="row">

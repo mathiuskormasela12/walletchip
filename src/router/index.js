@@ -21,6 +21,13 @@ import Activated from '../views/auth/Activated'
 import ResetPassword from '../views/auth/ResetPass'
 
 import Home from '../views/Dashboard/Home'
+import History from '../views/Dashboard/History'
+
+import Transfer from '../views/Transfer/Home'
+
+import TopUp from '../views/TopUp/Home'
+
+import Profile from '../views/Profile/Home'
 
 function Router() {
   return (
@@ -53,6 +60,30 @@ function Router() {
       <Route path="/dashboard" exact>
         <Navbar>
           <Home />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/dashboard/history">
+        <Navbar>
+          <History />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer" exact>
+        <Navbar>
+          <Transfer />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/topup" exact>
+        <Navbar>
+          <TopUp />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/profile" exact>
+        <Navbar>
+          <Profile />
         </Navbar>
         <Footer />
       </Route>
