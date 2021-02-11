@@ -2,6 +2,12 @@ import React from 'react'
 import './PinForm.css'
 
 export function PinForm() {
+  // const [autoFocus, setAutoFocus] = useState('')
+  // const handleInput = (event) => {
+  //   if (event.target.id === '1') {
+  //     setAutoFocus(`autoFocus="true"`)
+  //   }
+  // }
   return (
     <>
       <div className="col-lg-6">
@@ -23,12 +29,21 @@ export function PinForm() {
             <div className="row">
               <form>
                 <div className="gap-4 my-5 d-flex justify-content-center align-items-center">
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
+                  {
+                    [1, 2, 3, 4, 5 ,6].map((element, index) => {
+                      return (
+                        <React.Fragment key={String(index)}>
+                          <input 
+                          type="text" 
+                          maxLength="1" 
+                          className="form-control pin-form-costum d-flex justify-content-center align-items-center" 
+                          id={element}
+                          aria-describedby="emailHelp"
+                          />
+                        </React.Fragment>
+                      )
+                    })
+                  }
                 </div>
                 <div className="d-grid mt-5">
                   <button type="submit" className="btn btn-gray py-2 fw-bold text-secondary">Confirm</button>
