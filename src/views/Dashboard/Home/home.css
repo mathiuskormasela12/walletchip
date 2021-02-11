@@ -1,0 +1,26 @@
+.card-balance {
+    background-color: #6379F4 !important;
+}
+
+.btn-balance-control {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.img-profile-avatar {
+    width: 100px !important;
+    height: auto;
+    /* height: 60px !important; */
+}
+
+.transfer-color {
+    color: #1EC15F;
+}
+
+.subsription-color {
+    color: #FF5B37;
+}
+
+.card-transaction-history {
+    height: 235px;
+
+}
