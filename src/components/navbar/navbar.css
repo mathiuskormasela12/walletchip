@@ -1,4 +1,13 @@
 /* Main navbar Config */
+.personal-info {
+  color: #3A3D42;
+  text-decoration: none;
+}
+
+.personal-info:hover {
+  color: var(--primary);
+}
+
 .nav-main {
   height: 15vh;
   border-bottom-left-radius: 25px;
@@ -9,4 +18,45 @@
 .main-body {
   background-color: #FAFCFE !important;
   height: 85vh;
+}
+
+.left-nav {
+  width: 100%;
+}
+
+.left-nav > .nav-item.active {
+  border-left: solid var(--primary) 4px;
+}
+
+.left-nav > .nav-item.active > .nav-link {
+  color: var(--primary) !important;
+  font-weight: 700;
+}
+
+.left-nav > .nav-item {
+  border-left: solid transparent 4px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 100% !important;
+}
+
+.left-nav > .nav-item:hover > .nav-link {
+  color: var(--primary) !important;
+}
+
+.left-nav > .nav-item > .nav-link {
+  margin-left: 1.5rem;
+  color: #3A3D42 !important;
+}
+
+/* Bell Dropdown Config */
+.dropdown-menu {
+  border-radius: 20px;
+  width: 350px;
+}
+
+.dropdown-menu > small, p {
+  color: #7A7886;
 }
