@@ -1,0 +1,22 @@
+.border-rad {
+    border-radius: 20px;
+}
+
+.border-rad_input {
+    border-radius: 12px;
+}
+
+.img-profile {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+
+.card-list-user {
+    height: 318px;
+}
+
+.pagination-bar {
+    width: 150px;
+    height: 40px;
+}
