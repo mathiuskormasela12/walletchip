@@ -30,16 +30,10 @@ export function PinForm() {
               <form>
                 <div className="gap-4 my-5 d-flex justify-content-center align-items-center">
                   {
-                    [1, 2, 3, 4, 5 ,6].map((element, index) => {
+                    [1,2,3,4,5,6].map((element, index) => {
                       return (
                         <React.Fragment key={String(index)}>
-                          <input 
-                          type="text" 
-                          maxLength="1" 
-                          className="form-control pin-form-costum d-flex justify-content-center align-items-center" 
-                          id={element}
-                          aria-describedby="emailHelp"
-                          />
+                          <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id={element} />
                         </React.Fragment>
                       )
                     })

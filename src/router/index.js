@@ -4,7 +4,8 @@ import {Switch, Route} from 'react-router-dom'
 
 // Import Components
 import {
-  AuthLayout
+  AuthLayout,
+  NavbarLanding
 } from '../components'
 
 // Import Views
@@ -20,7 +21,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" exact>
-        <LandingPage />
+        <NavbarLanding>
+          <LandingPage />
+        </NavbarLanding>
       </Route>
       <Route path="/auth/login" exact>
         <Login />

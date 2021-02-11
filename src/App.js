@@ -3,7 +3,8 @@ import React from 'react'
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
 
-// Import Bootstrap
+// Import Assets
+import './assets/css/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import 'popper.js'

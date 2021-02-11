@@ -1,0 +1,58 @@
+body {
+  overflow-x: hidden;
+}
+
+.card {
+  border-radius: 25px;
+  border: none;
+}
+
+/* Main Hero Config */
+.main-hero {
+  max-height: 100vh;
+  padding-top: 90px;
+  background: url('../../assets/images/hero-landing-wave.png');
+  background-color: var(--primary);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+/* Company Partners Config */
+.company-partners {
+  background-color: #F4F3FD;
+  height: 140px;
+  position: relative;
+}
+
+/* About App Config */
+.about-app {
+  background-color: #FAFCFE;
+}
+
+.features-card > .card {
+  box-shadow: 10px 10px 100px -74px rgba(0,0,0,0.75);
+}
+
+/* Great Features Config */
+.great-features {
+  background: rgba(71, 58, 209, 0.06);
+}
+
+/* Testimoni Config */
+.testimoni {
+  background-color: #FAFCFE;
+}
+
+.users-experience {
+  box-shadow: 1px 10px 64px -43px rgba(0,0,0,0.75);
+}
+
+/* Footer Config */
+.footer-landing {
+  background-color: var(--primary);
+}
+
+.footer-landing hr {
+  border: solid white 1px;
+}
