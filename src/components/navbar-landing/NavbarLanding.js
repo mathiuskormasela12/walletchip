@@ -25,7 +25,7 @@ export function NavbarLanding({ children }) {
 
   return (
     <React.Fragment>
-      <nav className={`navbar navbar-expand-lg navbar-dark fixed-top bg-transparent ${navOnShrink}`}>
+      <nav className={`navbar nav-landing navbar-expand-lg navbar-dark fixed-top bg-transparent ${navOnShrink}`}>
         <div className="container">
           <Link to={(token !== null) ? '/dashboard' : '/'} className="navbar-brand">
             {

@@ -1,0 +1,12 @@
+/* Main navbar Config */
+.nav-main {
+  height: 15vh;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+/* Main body Config */
+.main-body {
+  background-color: #FAFCFE !important;
+  height: 85vh;
+}
