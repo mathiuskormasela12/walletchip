@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 //import example photo profile
 import photoProfile from '../../../assets/images/1.png'
@@ -59,9 +60,9 @@ function Home() {
                 <span className="fw-bold">
                   Transaction History
                 </span>
-                <span style={{ color: "#6379F4" }}>
+                <Link to="/dashboard/history" style={{ color: "#6379F4" }} className="text-decoration-none">
                   See all
-                </span>
+                </Link>
               </div>
             </div>            
           </div>
