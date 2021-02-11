@@ -23,12 +23,15 @@ export function PinForm() {
             <div className="row">
               <form>
                 <div className="gap-4 my-5 d-flex justify-content-center align-items-center">
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
-                  <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id="email" aria-describedby="emailHelp"/>
+                  {
+                    [1,2,3,4,5,6].map((element, index) => {
+                      return (
+                        <React.Fragment key={String(index)}>
+                          <input type="text" maxLength="1" className="form-control pin-form-costum d-flex justify-content-center align-items-center" id={element} />
+                        </React.Fragment>
+                      )
+                    })
+                  }
                 </div>
                 <div className="d-grid mt-5">
                   <button type="submit" className="btn btn-gray py-2 fw-bold text-secondary">Confirm</button>
