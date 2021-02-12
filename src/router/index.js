@@ -28,6 +28,9 @@ import Transfer from '../views/Transfer/Home'
 import TopUp from '../views/TopUp/Home'
 
 import Profile from '../views/Profile/Home'
+import PersonalInformation from '../views/Profile/PersonalInformation'
+import ChangePassword from '../views/Profile/ChangePassword'
+import ChangePIN from '../views/Profile/ChangePIN'
 
 function Router() {
   return (
@@ -84,6 +87,24 @@ function Router() {
       <Route path="/profile" exact>
         <Navbar>
           <Profile />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/profile/:username" exact>
+        <Navbar>
+          <PersonalInformation />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/profile/:username/change-password">
+        <Navbar>
+          <ChangePassword />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/profile/:username/change-pin">
+        <Navbar>
+          <ChangePIN />
         </Navbar>
         <Footer />
       </Route>

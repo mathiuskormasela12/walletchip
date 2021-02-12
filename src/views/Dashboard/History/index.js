@@ -24,7 +24,7 @@ function History() {
                     <small>Transfer</small>
                   </div>
                 </div>
-                <span style={{ color: '#1EC15F' }}>+Rp50.000</span>
+                <span style={{ color: '#1EC15F' }} className="fw-bold">+Rp50.000</span>
               </div>
             )
           })
@@ -42,7 +42,7 @@ function History() {
                     <small>Transfer</small>
                   </div>
                 </div>
-                <span style={{ color: '#1EC15F' }}>+Rp50.000</span>
+                <span style={{ color: '#1EC15F' }} className="fw-bold">+Rp50.000</span>
               </div>
             )
           })

@@ -1,7 +1,7 @@
 const initialState = {
   firstName: 'Rizki',
   lastName: 'Ramadhan',
-  username: '',
+  username: 'rizkirim26',
   email: '',
   phone: '+62 8139 3877 7946',
   avatar: 'https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg'
