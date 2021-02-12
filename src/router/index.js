@@ -32,6 +32,10 @@ import PersonalInformation from '../views/Profile/PersonalInformation'
 import ChangePassword from '../views/Profile/ChangePassword'
 import ChangePIN from '../views/Profile/ChangePIN'
 
+import Confirmation from '../views/Transfer/Confirmation'
+import InputAmount from '../views/Transfer/Input-Amount'
+import TransferSuccess from '../views/Transfer/TransferSuccess'
+
 function Router() {
   return (
     <Switch>
@@ -75,6 +79,24 @@ function Router() {
       <Route path="/transfer" exact>
         <Navbar>
           <Transfer />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/" exact>
+        <Navbar>
+          <InputAmount />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/confirm" exact>
+        <Navbar>
+          <Confirmation />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/confirm/success" exact>
+        <Navbar>
+          <TransferSuccess />
         </Navbar>
         <Footer />
       </Route>
