@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import hardSet from 'redux-persist/es/stateReconciler/hardSet'
 
 // Import Reducers
+import mainReducer from './main'
 import authReducer from './auth'
 import userReducer from './user'
 
@@ -22,6 +23,7 @@ const authPersistConfig = {
 }
 
 const rootReducer = combineReducers({
+  main: mainReducer,
   auth: persistReducer(authPersistConfig, authReducer),
   user: userReducer
 })
