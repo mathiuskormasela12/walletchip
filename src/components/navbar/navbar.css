@@ -17,7 +17,7 @@
 /* Main body Config */
 .main-body {
   background-color: #FAFCFE !important;
-  height: 85vh;
+  height: inherit;
 }
 
 .left-nav {
