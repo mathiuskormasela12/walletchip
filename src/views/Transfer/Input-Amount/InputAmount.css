@@ -1,0 +1,8 @@
+.border-rad {
+    border-radius: 20px;
+}
+
+.btn-blue {
+    background-color: #6379F4;
+    border-radius: 12px !important;
+}

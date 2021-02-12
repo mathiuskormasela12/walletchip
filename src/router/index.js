@@ -28,6 +28,9 @@ import Transfer from '../views/Transfer/Home'
 import TopUp from '../views/TopUp/Home'
 
 import Profile from '../views/Profile/Home'
+import Confirmation from '../views/Transfer/Confirmation'
+import InputAmount from '../views/Transfer/Input-Amount'
+import TransferSuccess from '../views/Transfer/TransferSuccess'
 
 function Router() {
   return (
@@ -72,6 +75,24 @@ function Router() {
       <Route path="/transfer" exact>
         <Navbar>
           <Transfer />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/" exact>
+        <Navbar>
+          <InputAmount />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/confirm" exact>
+        <Navbar>
+          <Confirmation />
+        </Navbar>
+        <Footer />
+      </Route>
+      <Route path="/transfer/input-amount/confirm/success" exact>
+        <Navbar>
+          <TransferSuccess />
         </Navbar>
         <Footer />
       </Route>

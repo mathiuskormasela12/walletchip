@@ -1,0 +1,17 @@
+.success-icon {
+    height: 70px;
+    width: auto;
+}
+
+.btn-gray {
+    background: rgba(99, 121, 244, 0.15);
+    border-radius: 12px;
+}
+
+.text-blue {
+    color: #6379F4;
+}
+
+.card-transfer-success {
+    height: 356px;
+}
