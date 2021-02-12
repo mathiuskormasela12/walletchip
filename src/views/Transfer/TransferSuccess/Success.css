@@ -15,3 +15,7 @@
 .card-transfer-success {
     height: 356px;
 }
+
+.card-transfer-failed {
+    height: 301px;
+}

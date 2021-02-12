@@ -25,7 +25,7 @@ import History from '../views/Dashboard/History'
 
 import Transfer from '../views/Transfer/Home'
 
-import TopUp from '../views/TopUp/Home'
+import TopUp from '../views/TopUp'
 
 import Profile from '../views/Profile/Home'
 import Confirmation from '../views/Transfer/Confirmation'
