@@ -18,19 +18,19 @@ function PersonalInformation() {
             <div className="card shadow-sm my-3" id="1">
               <div className="card-body">
                 <small className="text-muted">First Name</small> <br />
-                <input className="form-control py-2 border-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
+                <input className="form-control py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
               </div>
             </div>
             <div className="card shadow-sm my-3" id="1">
               <div className="card-body">
                 <small className="text-muted">Last Name</small> <br />
-                <input className="form-control py-2 border-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
+                <input className="form-control py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
               </div>
             </div>
             <div className="card shadow-sm my-3" id="1">
               <div className="card-body">
                 <small className="text-muted">Verified E-mail</small> <br />
-                <input className="form-control py-2 border-0 fw-bold" type="email" placeholder="" aria-label="default input example"/>
+                <input className="form-control py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 fw-bold" type="email" placeholder="" aria-label="default input example"/>
               </div>
             </div>
             <div className="card shadow-sm my-3" id="1">
@@ -38,7 +38,7 @@ function PersonalInformation() {
                 <small className="text-muted">Phone Number</small> <br />
                 <div className="d-flex align-items-center position-relative justify-content-end">
                   <Link to="" className="position-absolute text-decoration-none me-3">Manage</Link>
-                  <input className="form-control bg-transparent py-2 border-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
+                  <input className="form-control bg-transparent py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
                 </div>
               </div>
             </div>

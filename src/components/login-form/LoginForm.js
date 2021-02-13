@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './LoginForm.css'
 
 export function LoginForm() {
@@ -25,15 +26,15 @@ export function LoginForm() {
               <form>
                 <div className="my-5 position-relative d-flex align-items-center">
                   <i className="far fa-envelope position-absolute text-muted ms-2"></i>
-                  <input type="email" className="form-control border-top-0 border-start-0 border-end-0 border-bottom-2 ps-5" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email" />
+                  <input type="email" className="form-control border-top-0 border-start-0 border-2 rounded-0 outline-none border-end-0 ps-5 form-change-password" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email" />
                 </div>
                 <div className="mt-5 position-relative d-flex align-items-center">
                   <i className="far fa-unlock-alt position-absolute text-muted ms-2"></i>
                   <i className="far fa-eye-slash position-absolute text-muted eye-icon"></i>
-                  <input type="password" className="form-control border-top-0 border-start-0 border-end-0 border-bottom-2 ps-5" id="password" placeholder="Enter Your Password" />
+                  <input type="password" className="form-control border-top-0 border-start-0 border-2 rounded-0 outline-none border-end-0 ps-5 form-change-password" id="password" placeholder="Enter Your Password" />
                 </div>
-                <div className="row mt-2">
-                  <small className="text-end fw-bold">Forgot Password?</small>
+                <div className="row mt-3">
+                  <Link to="/auth/forgot/" className="text-end fw-bold text-decoration-none"><small>Forgot Password?</small></Link>
                 </div>
                 <div className="d-grid mt-5">
                   <button type="submit" className="btn btn-gray py-2 fw-bold text-secondary">Login</button>
