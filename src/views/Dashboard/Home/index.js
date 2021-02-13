@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 //import example photo profile
 import photoProfile from '../../../assets/images/1.png'
@@ -8,9 +9,10 @@ import photoProfile from '../../../assets/images/1.png'
 import './home.css'
 
 function Home() {
-
+  const user = useSelector(state => state.user)
+  
   React.useEffect(() => {
-    document.title = `Rizki's Dashboard - Walletchip`
+    document.title = `${user.firstName}'s Dashboard - Walletchip`
   }, [])
 
   return (
@@ -27,24 +29,24 @@ function Home() {
                   <h2 className="fw-bold text-white">Rp.{`120.000`}</h2>
                 </div>
                 <div className="row mt-2">
-                  <small style={{ color: "#E0E0E0" }}>+62 813-9387-7946</small>
+                  <small style={{ color: "#E0E0E0" }}>{user.phone}</small>
                 </div>
               </div>
               <div className="col-3">
                 <div className="row my-3">
                   <div className="d-grid">
-                    <button className="btn border border-2 py-2 btn-balance-control fw-bold text-white">
+                    <Link to="/transfer" className="btn border border-2 py-2 btn-balance-control fw-bold text-white">
                       <i className="far fa-arrow-up me-3" style={{ color: "#E0E0E0" }}></i>
-                    Transfer
-                  </button>
+                      Transfer
+                    </Link>
                   </div>
                 </div>
                 <div className="row my-3">
                   <div className="d-grid">
-                    <button className="btn border border-2 py-2 btn-balance-control fw-bold text-white">
+                    <Link to="/topup" className="btn border border-2 py-2 btn-balance-control fw-bold text-white">
                       <i className="far fa-plus me-3" style={{ color: "#E0E0E0" }}></i>
-                    Topup
-                  </button>
+                      Topup
+                    </Link>
                   </div>
                 </div>
               </div>
