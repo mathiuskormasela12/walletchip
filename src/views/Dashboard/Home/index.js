@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 //import example photo profile
 import photoProfile from '../../../assets/images/1.png'
@@ -9,9 +10,10 @@ import { Footer, Navbar } from '../../../components'
 import './home.css'
 
 function Home() {
-
+  const user = useSelector(state => state.user)
+  
   React.useEffect(() => {
-    document.title = `Rizki's Dashboard - Walletchip`
+    document.title = `${user.firstName}'s Dashboard - Walletchip`
   }, [])
 
   return (
