@@ -6,3 +6,8 @@
 .btn-gray{
     background-color: #DADADA;
 }
+
+.outline-none:focus {
+    outline: none !important;
+    box-shadow: none;
+}

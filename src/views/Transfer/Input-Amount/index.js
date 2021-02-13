@@ -51,14 +51,14 @@ function InputAmount() {
                   <div className="mb-3">
                     <label className="form-label text-muted">Amount</label>
                     <div className="input-group mb-3">
-                      <span className="input-group-text bg-transparent border-0 border-rad_input" id="basic-addon1">Rp.</span>
-                      <input type="number" className="form-control py-2 rounded-3" placeholder="Amount" aria-label="Amount" aria-describedby="basic-addon1" />
+                      <span className="input-group-text bg-transparent border-0 border-rad_input fw-bold" id="basic-addon1">Rp.</span>
+                      <input type="number" className="form-control py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0" placeholder="Amount" aria-label="Amount" aria-describedby="basic-addon1" />
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label text-muted">Notes</label>
                     <div className="input-group mb-3">
-                      <input type="text" className="form-control py-2 rounded-3" placeholder="Enter notes transfer" aria-label="notes" aria-describedby="basic-addon1" />
+                      <input type="text" className="form-control py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0" placeholder="Enter notes transfer" aria-label="notes" aria-describedby="basic-addon1" />
                     </div>
                   </div>
                   <div className="d-flex justify-content-end mt-4 mb-2">

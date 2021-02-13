@@ -23,7 +23,7 @@ export function ForgotForm() {
               <form>
                 <div className="my-5 position-relative d-flex align-items-center">
                   <i className="far fa-envelope position-absolute text-muted ms-2"></i>
-                  <input type="email" className="form-control border-top-0 border-start-0 border-end-0 border-bottom-2 ps-5" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email" />
+                  <input type="email" className="form-control border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 ps-5" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email" />
                 </div>
                 <div className="d-grid mt-5">
                   <button type="submit" className="btn btn-gray py-2 fw-bold text-secondary">Confirm</button>
