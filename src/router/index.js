@@ -4,7 +4,6 @@ import {Switch, Route} from 'react-router-dom'
 
 // Import Components
 import {
-  AuthLayout,
   NavbarLanding,
   Navbar,
   Footer
@@ -60,9 +59,7 @@ function Router() {
         <ResetPassword />
       </Route>
       <Route path="/auth/activated">
-        <AuthLayout>
-          <Activated />
-        </AuthLayout>
+        <Activated />
       </Route>
       <Route path="/dashboard" exact>
         <Navbar>
