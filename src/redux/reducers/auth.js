@@ -1,5 +1,6 @@
 const initialState = {
-  token: null
+  token: null,
+  message : ''
 }
 
 const authReducer = (state=initialState, action) => {
@@ -7,7 +8,13 @@ const authReducer = (state=initialState, action) => {
     case 'LOGIN': {
       return {
         ...state,
-        token: action.token
+        token: action.payload
+      }
+    }
+    case 'SET_MSG_LOGIN': {
+      return {
+        ...state,
+        message: action.payload
       }
     }
     case 'LOGOUT': {

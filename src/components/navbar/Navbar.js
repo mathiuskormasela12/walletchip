@@ -12,9 +12,9 @@ import './navbar.css'
 
 export function Navbar({ children }) {
   const location = useLocation()
-  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const route = location.pathname.split('/')[1]
+  const user = useSelector(state => state.user.userDetail)
 
   const logoutHandler = (e) => {
     e.preventDefault()
@@ -39,9 +39,9 @@ export function Navbar({ children }) {
               <li className="nav-item d-flex">
                 <img src={user.avatar} alt="avatar" className="img-fluid img-avatar me-3"/>
                 <Link to="/profile" className="text-center personal-info me-3">
-                  <span className="fw-bold">{`${user.firstName} ${user.lastName}`}</span>
+                  <span className="fw-bold">{user.first_name === null ?  `${user.username}` : `${user.first_name} ${user.last_name}`}</span>
                   <br/>
-                  <small>{user.phone}</small>
+                  <small>{user.phone === null ? `Update you phone` : `${user.phone}`}</small>
                 </Link>
               </li>
               <li className="nav-item dropdown">

@@ -8,6 +8,7 @@ import hardSet from 'redux-persist/es/stateReconciler/hardSet'
 import mainReducer from './main'
 import authReducer from './auth'
 import userReducer from './user'
+import registerReducers from './register'
 
 // Persist Cpnfiguration
 const rootPersistConfig = {
@@ -25,7 +26,8 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   main: mainReducer,
   auth: persistReducer(authPersistConfig, authReducer),
-  user: userReducer
+  user: userReducer,
+  register: registerReducers
 })
 
 export default persistReducer(rootPersistConfig, rootReducer)

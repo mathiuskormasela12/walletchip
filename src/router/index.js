@@ -1,6 +1,6 @@
 // Import All Modules
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 // Import Components
 import {
@@ -8,6 +8,9 @@ import {
   Navbar,
   Footer
 } from '../components'
+
+//import privateRoute
+import PrivateRoute from './PrivateRoute';
 
 // Import Views
 import LandingPage from '../views/LandingPage'
@@ -50,29 +53,31 @@ function Router() {
         <Register />
       </Route>
       <Route exact path="/auth/forgot">
-          <Forgot />
+        <Forgot />
       </Route>
-      <Route path="/auth/create-pin">
+      <Route path="/auth/create-pin/:token">
         <CreatePin />
       </Route>
       <Route path="/auth/forgot/reset-password">
         <ResetPassword />
       </Route>
-      <Route path="/auth/activated">
+      <Route path="/auth/activated/">
         <Activated />
       </Route>
-      <Route path="/dashboard" exact>
+      <PrivateRoute exact path='/dashboard' privateComponent={Home} />
+      <PrivateRoute exact path='/dashboard/history' privateComponent={History} />
+      {/* <Route path="/dashboard" exact>
         <Navbar>
           <Home />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/dashboard/history">
+      </Route> */}
+      {/* <Route path="/dashboard/history">
         <Navbar>
           <History />
         </Navbar>
         <Footer />
-      </Route>
+      </Route> */}
       <Route path="/transfer" exact>
         <Navbar>
           <Transfer />
@@ -126,6 +131,11 @@ function Router() {
           <ChangePIN />
         </Navbar>
         <Footer />
+      </Route>
+      <Route path="*">
+        <NavbarLanding>
+          <LandingPage />
+        </NavbarLanding>
       </Route>
     </Switch>
   )

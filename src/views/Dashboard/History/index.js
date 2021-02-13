@@ -2,11 +2,14 @@ import React from 'react'
 
 // Import Assets
 import People from '../../../assets/images/1.png'
+import { Footer, Navbar } from '../../../components'
 import './history.css'
 
 function History() {
   return (
-    <div className="card shadow-sm">
+    <>
+      <Navbar>
+      <div className="card shadow-sm">
       <div className="card-header border-0 bg-transparent pt-4">
         <h5 className="fw-bold">Transaction History</h5>
       </div>
@@ -49,6 +52,9 @@ function History() {
         }
       </div>
     </div>
+      </Navbar>
+      <Footer />
+    </>
   )
 }
 

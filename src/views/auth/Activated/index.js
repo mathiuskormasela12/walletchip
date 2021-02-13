@@ -2,6 +2,7 @@ import React from 'react'
 import { AuthLayout } from '../../../components'
 import success from '../../../assets/images/success.png'
 import { Link } from 'react-router-dom'
+//import jwt decode
 
 
 function Activated() {
