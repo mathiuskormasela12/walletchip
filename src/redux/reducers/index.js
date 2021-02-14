@@ -15,7 +15,7 @@ import transactionReducer from './transaction'
 const rootPersistConfig = {
   key: 'root',
   storage,
-  blacklist: ['auth']
+  blacklist: ['auth', 'user', 'transaction']
 }
 
 const authPersistConfig = {
@@ -26,8 +26,7 @@ const authPersistConfig = {
 
 const detailUserPersistConfig = {
   key: 'user',
-  storage,
-  statereConciler: hardSet
+  storage
 }
 
 const rootReducer = combineReducers({

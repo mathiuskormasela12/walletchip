@@ -5,7 +5,8 @@ const initialState = {
   amount: '',
   user: [],
   pin: '',
-  results: []
+  results: [],
+  pageInfo: {}
 }
 
 const transactionReducer = (state = initialState, action) => {
@@ -29,6 +30,13 @@ const transactionReducer = (state = initialState, action) => {
         ...state,
         results: action.results
       }
+    case 'TRANSACTIONS': {
+      return {
+        ...state,
+        results: action.results,
+        pageInfo: action.pageInfo
+      }
+    }
     default:
       return {
         ...state
