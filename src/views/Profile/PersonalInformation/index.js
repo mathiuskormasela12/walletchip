@@ -34,7 +34,7 @@ function PersonalInformation() {
         setMessage(response.data.message)
       })
       .catch(error => {
-        setError(error.data.message)
+        setError(error.response.data.message)
       })
   }
 

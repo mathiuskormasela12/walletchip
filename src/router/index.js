@@ -1,6 +1,7 @@
 // Import All Modules
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // Import Components
 import {
@@ -33,12 +34,15 @@ import Profile from '../views/Profile/Home'
 import PersonalInformation from '../views/Profile/PersonalInformation'
 import ChangePassword from '../views/Profile/ChangePassword'
 import ChangePIN from '../views/Profile/ChangePIN'
+import NewPin from '../views/Profile/ChangePIN/NewPin'
 
 import Confirmation from '../views/Transfer/Confirmation'
 import InputAmount from '../views/Transfer/Input-Amount'
 import TransferSuccess from '../views/Transfer/TransferSuccess'
 
 function Router() {
+  const pinValid = useSelector(state => state.main.pinValid)
+
   return (
     <Switch>
       <Route path="/" exact>
@@ -128,7 +132,9 @@ function Router() {
       </Route>
       <Route path="/profile/:username/change-pin">
         <Navbar>
-          <ChangePIN />
+          {
+            pinValid ? <NewPin /> : <ChangePIN />
+          }
         </Navbar>
         <Footer />
       </Route>

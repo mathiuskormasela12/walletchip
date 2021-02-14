@@ -38,7 +38,7 @@ function Profile() {
   const handleImageInput = (event) => {
     event.preventDefault()
     formik.setFieldValue('picture', event.currentTarget.files[0])
-    formik.submitForm()
+    
   }
 
   const logoutHandler = (e) => {

@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import jwt_decode from 'jwt-decode'
 import { useSelector, useDispatch } from 'react-redux'
-import { validatePin } from '../../../redux/actions/main'
+import { setPinNoValid } from '../../../redux/actions/main'
+
+// import helpers
+import http from '../../../helpers/Http'
 
 // Import Assets
 import './changePin.css'
 
-function ChangePIN() {
+function NewPin() {
   const [inputOne, setInputOne] = useState('')
   const [inputTwo, setInputTwo] = useState('')
   const [inputThree, setInputThree] = useState('')
@@ -15,10 +19,9 @@ function ChangePIN() {
   const pin = `${inputOne}${inputTwo}${inputThree}${inputFour}${inputFive}${inputSix}`
 
   const dispatch = useDispatch()
-  const pinValid = useSelector(state => state.main.pinValid)
   const token = useSelector(state => state.auth.token)
+  const decodedToken = jwt_decode(token)
 
-  const [message, setMessage] = React.useState('')
   const [error, setError] = React.useState('')
   const [disabled, setDisabled] = useState(true)
 
@@ -40,13 +43,18 @@ function ChangePIN() {
 
   const submitHandler = event => {
     event.preventDefault()
-    
-    dispatch(validatePin(token, pin))
-    if (!pinValid) {
-      setError('wrong PIN!')
-    } else {
-      setMessage('Successfully create new PIN')
-    }
+    const { id } = decodedToken
+
+    const params = new URLSearchParams()
+    params.append('pin', pin)
+
+    http(token).patch(`/auth/pin/${id}`, params)
+      .then(() => {
+        dispatch(setPinNoValid())
+      })
+      .catch(error => {
+        setError(error.response.data.message)
+      })
   }
 
   React.useEffect(() => {
@@ -61,7 +69,7 @@ function ChangePIN() {
     <div className="card shadow-sm p-4 h-100">
       <div className="card-header border-0 bg-transparent pt-4">
         <h5 className="fw-bold mb-4">Change PIN</h5>
-        <p style={{ color: '#7A7886' }}>Enter your current 6 digits Walletchip PIN below to continue to the next steps.</p>
+        <p style={{ color: '#7A7886' }}>Type your new 6 digits security PIN to use in Walletchip.</p>
       </div>
       <div className="card-body text-center">
         <form onSubmit={submitHandler} style={{ paddingLeft: '9.5rem', paddingRight: '9.5rem' }}>
@@ -77,15 +85,10 @@ function ChangePIN() {
             }
           </div>
             {
-              message ? <small className="text-success">{message}</small> : ''
-            }
-            {
               error ? <small className="text-danger">{error}</small> : ''
             }
           <div className="d-grid mt-5">
-            <button style={{ borderRadius: '10px' }} className={`btn btn-primary py-2 fw-bold ${disabled ? 'disabled' : ''}`}>
-              Continue
-            </button>
+            <button style={{ borderRadius: '10px' }} type="submit" className={`btn btn-primary py-2 fw-bold ${disabled ? 'disabled' : ''}`}>Confirm</button>
           </div>
         </form>
       </div>
@@ -93,4 +96,4 @@ function ChangePIN() {
   )
 }
 
-export default ChangePIN
+export default NewPin
