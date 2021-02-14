@@ -1,4 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import jwt_decode from 'jwt-decode'
+
+// import helpers
+import http from '../../../helpers/Http'
 
 // Import Assets
 import './changePassword.css'
@@ -10,6 +15,15 @@ function ChangePassword() {
   const [currentClass, setCurrentClass] = React.useState(null)
   const [newClass, setNewClass] = React.useState(null)
   const [repeatClass, setRepeatClass] = React.useState(null)
+  const [currentPasswordInput, setCurrentPasswordInput] = React.useState('')
+  const [newPasswordInput, setNewPasswordInput] = React.useState('')
+  const [repeatPasswordInput, setRepeatPasswordInput] = React.useState('')
+
+  const token = useSelector(state => state.auth.token)
+  const decodedToken = jwt_decode(token)
+
+  const [message, setMessage] = React.useState('')
+  const [error, setError] = React.useState('')
   const [disabled, setDisabled] = React.useState(true)
 
   const currentEye = event => {
@@ -33,6 +47,7 @@ function ChangePassword() {
     } else {
       setCurrentClass(null)
     }
+    setCurrentPasswordInput(event.target.value)
   }
   const newInput = event => {
     if (event.target.value.length > 0) {
@@ -40,6 +55,7 @@ function ChangePassword() {
     } else {
       setNewClass(null)
     }
+    setNewPasswordInput(event.target.value)
   }
   const repeatInput = event => {
     if (event.target.value.length > 0) {
@@ -47,11 +63,38 @@ function ChangePassword() {
     } else {
       setRepeatClass(null)
     }
+    setRepeatPasswordInput(event.target.value)
+  }
+
+  const submitHandler = (event) => {
+    event.preventDefault()
+    setMessage('')
+    setError('')
+
+    const { id } = decodedToken
+
+    if (newPasswordInput !== repeatPasswordInput) {
+      return setError("Password doesn't match !")
+    }
+
+    const params = new URLSearchParams()
+    params.append('currentPassword', currentPasswordInput)
+    params.append('newPassword', newPasswordInput)
+    
+    http(token).patch(`/user/password/${id}`, params)
+      .then(response => {
+        setMessage(response.data.message)
+      })
+      .catch(error => {
+        setError(error.response.data.message)
+      })
   }
 
   React.useEffect(() => {
     if (currentClass !== null && newClass !== null && repeatClass !== null) {
       setDisabled(initialState => !initialState)
+    } else {
+      setDisabled(true)
     }
   }, [currentClass, newClass, repeatClass])
 
@@ -63,13 +106,19 @@ function ChangePassword() {
       </div>
       <div className="card-body text-center">
         <div style={{ paddingLeft: '10rem', paddingRight: '10rem' }}>
-          <form className="form-change-password">
+          {
+            message ? <small className="text-success">{message}</small> : ''
+          }
+          {
+            error ? <small className="text-danger">{error}</small> : ''
+          }
+          <form onSubmit={submitHandler} className="form-change-password">
             <div className="mb-5 position-relative">
               <svg style={{ bottom: '10px' }} className="position-absolute left-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 11H5V21H19V11Z" stroke={currentClass ? '#6379F4' : '#A9A9A9'} strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke={currentClass ? '#6379F4' : '#A9A9A9'} strokeOpacity="0.6" strokeWidth="2" strokeLinecap="square" strokeLinejoin="round"/>
               </svg>
-              <input className={`w-100 py-2 ${currentClass}`} onChange={currentInput} type={currentPassword ? 'text' : 'password'} name="currentPassword" id="currentPassword" placeholder="Current password" />
+              <input value={currentPasswordInput} className={`w-100 py-2 ${currentClass}`} onChange={currentInput} type={currentPassword ? 'text' : 'password'} name="currentPassword" id="currentPassword" placeholder="Current password" />
               {
                 currentPassword ? (
                   <svg style={{ cursor: 'pointer', position: 'absolute', right: '0', bottom: '10px' }} onClick={currentEye} width="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#6379F4">
@@ -89,7 +138,7 @@ function ChangePassword() {
                 strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke={newClass ? '#6379F4' : '#A9A9A9'} strokeOpacity="0.6" strokeWidth="2" strokeLinecap="square" strokeLinejoin="round"/>
               </svg>
-              <input className={`w-100 py-2 ${newClass}`} onChange={newInput} type={newPassword ? 'text' : 'password'} name="newPassword" id="newPassword" placeholder="New password" />
+              <input value={newPasswordInput} className={`w-100 py-2 ${newClass}`} onChange={newInput} type={newPassword ? 'text' : 'password'} name="newPassword" id="newPassword" placeholder="New password" />
               {
                 newPassword ? (
                   <svg style={{ cursor: 'pointer', position: 'absolute', right: '0', bottom: '10px' }} onClick={newEye}width="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#6379F4">
@@ -108,7 +157,7 @@ function ChangePassword() {
                 <path d="M19 11H5V21H19V11Z" stroke={repeatClass ? '#6379F4' : '#A9A9A9'} strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke={repeatClass ? '#6379F4' : '#A9A9A9'} strokeOpacity="0.6" strokeWidth="2" strokeLinecap="square" strokeLinejoin="round"/>
               </svg>
-              <input className={`w-100 py-2 ${repeatClass}`} onChange={repeatInput} type={repeatPassword ? 'text' : 'password'} name="repeatPassword" id="repeatPassword" placeholder="Repeat new password" />
+              <input value={repeatPasswordInput} className={`w-100 py-2 ${repeatClass}`} onChange={repeatInput} type={repeatPassword ? 'text' : 'password'} name="repeatPassword" id="repeatPassword" placeholder="Repeat new password" />
               {
                 repeatPassword ? (
                   <svg style={{ cursor: 'pointer', position: 'absolute', right: '0', bottom: '10px' }} onClick={repeatEye} width="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#6379F4">

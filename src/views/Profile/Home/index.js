@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../../redux/actions/auth'
+import { getUser } from '../../../redux/actions/auth'
+import http from '../../../helpers/Http'
+import jwt_decode from 'jwt-decode'
 
 // Import Assets
 import './profileHome.css'
@@ -17,8 +20,10 @@ function Profile() {
     "image/png"
   ]
 
+  const token = useSelector(state => state.auth.token)
   const user = useSelector(state => state.user.userDetail)
   const dispatch = useDispatch()
+  const [isRefresh, setIsRefresh] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -27,18 +32,25 @@ function Profile() {
     validationSchema: Yup.object({
       picture: Yup.mixed()
                 .required('You must upload an image!')
-                .test('imageSize', 'The maximum image size is only 2MB', value => value && value.size <= IMAGE_SIZE)
+                .test('imageSize', 'The maximum image size is only 3MB', value => value && value.size <= IMAGE_SIZE)
                 .test('fileFormat', 'You must upload an image!', value => value && SUPPORTED_FORMATS.includes(value.type))
     }),
     onSubmit: values => {
-      console.log(values)
+      console.log(values.picture)
     }
   })
 
   const handleImageInput = (event) => {
     event.preventDefault()
+    const { id } = jwt_decode(token)
     formik.setFieldValue('picture', event.currentTarget.files[0])
-    formik.submitForm()
+
+    const picture = new FormData()
+    picture.append('picture', event.currentTarget.files[0])
+    http(token).patch(`user/picture/${id}`, picture)
+      .then(() => {
+        setIsRefresh(currentState => !currentState)
+      })
   }
 
   const logoutHandler = (e) => {
@@ -48,6 +60,10 @@ function Profile() {
       history.push('/')
     }
   }
+
+  React.useEffect(() => {
+    dispatch(getUser(token))
+  }, [isRefresh])
 
   return (
     <div className="card shadow-sm">
@@ -72,7 +88,7 @@ function Profile() {
             </form>
           </div>
 
-          <h5 style={{ color: '#4D4B57' }} className="fw-bold fs-5 mt-3">{(user.firstName) ? `${user.firstName} ${user.lastName}` : `${user.username}`}</h5>
+          <h5 style={{ color: '#4D4B57' }} className="fw-bold fs-5 mt-3">{(user.first_name) ? `${user.first_name} ${user.last_name}` : user.username}</h5>
           {
             (user.phone) ? (
               <p style={{ fontSize: '13px' }}>{user.phone}</p>

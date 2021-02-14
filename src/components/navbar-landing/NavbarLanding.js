@@ -46,7 +46,7 @@ export function NavbarLanding({ children }) {
                   <Link to="/profile" className="nav-item d-flex">
                     <img src={user.picture} alt="avatar" className="img-fluid img-avatar me-3"/>
                     <div className="text-white text-center personal-info me-3">
-                      <h6 className="fw-bold">{(user.firstName) ? `${user.firstName} ${user.lastName}` : `${user.username}`}</h6>
+                      <h6 className="fw-bold">{(user.first_name) ? `${user.first_name} ${user.last_name}` : `${user.username}`}</h6>
                       <small>{(user.phone) ? user.phone : 'Update your phone'}</small>
                     </div>
                   </Link>

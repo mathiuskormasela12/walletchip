@@ -1,5 +1,6 @@
 const initialState = {
-  peekPassword: false
+  peekPassword: false,
+  pinValid: false
 }
 
 const mainReducer = (state=initialState, action) => {
@@ -8,6 +9,18 @@ const mainReducer = (state=initialState, action) => {
       return {
         ...state,
         peekPassword: !state.peekPassword
+      }
+    }
+    case 'VALIDATE_PIN': {
+      return {
+        ...state,
+        pinValid: action.pinValid
+      }
+    }
+    case 'SET_PIN_NO_VALID': {
+      return {
+        ...state,
+        pinValid: false
       }
     }
     default : {
