@@ -1,6 +1,6 @@
 // Import All Modules
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 // Import Actions
@@ -11,6 +11,7 @@ import LogoB from '../../assets/images/walletchip-logo-b.png'
 import './navbar.css'
 
 export function Navbar({ children }) {
+  const history = useHistory()
   const location = useLocation()
   const dispatch = useDispatch()
   const route = location.pathname.split('/')[1]
