@@ -6,6 +6,7 @@ import './Transfer.css'
 
 import http from '../../../helpers/Http'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Transfer() {
   const [listUser, setListUser] = useState(null)
@@ -16,7 +17,7 @@ function Transfer() {
   const getListUser = async (token) => {
     try {
       const listAllUser = await http(token).get('user')
-      setListUser(listAllUser.data.results) 
+      setListUser(listAllUser.data.results)
       setLink(listAllUser.data.pageInfo)
       setIsLoading(!isLoading)
     } catch (err) {
@@ -49,6 +50,18 @@ function Transfer() {
     }
   }
 
+  const searchUser = async (event) => {
+    try {
+      const listAllUser = await http(user.token).get(`user?search=${event.target.value}`)
+      setListUser(listAllUser.data.results)
+      setLink(listAllUser.data.pageInfo)
+    } catch (err) {
+      console.log(err)
+      setIsLoading(!isLoading)
+    }
+
+  }
+
   useEffect(() => {
     getListUser(user.token)
   }, [])
@@ -66,7 +79,7 @@ function Transfer() {
           <div className="row">
             <div className="position-relative d-flex align-items-center">
               <i className="far fa-search text-muted position-absolute ms-3"></i>
-              <input type="text" className="form-control py-2 ps-5 border-0 border-rad_input" placeholder="Search receiver here" aria-label="Username" aria-describedby="addon-wrapping" style={{ backgroundColor: "rgba(58, 61, 66, 0.1)" }} />
+              <input type="text" className="form-control py-2 ps-5 border-0 border-rad_input" placeholder="Search receiver here" aria-label="Username" aria-describedby="addon-wrapping" style={{ backgroundColor: "rgba(58, 61, 66, 0.1)" }} name="search" onChange={event => searchUser(event)} />
             </div>
           </div>
         </div>
@@ -94,27 +107,29 @@ function Transfer() {
                     </div>
                   </div>
                   :
-                  listUser.map(user => {
+                  listUser.map((user, index) => {
                     return (
                       <>
-                        <div className="card shadow-sm my-2" id={user}>
-                          <div className="card-body">
-                            <div className="row">
-                              <div className="col-1">
-                                <img src={user.picture} alt="avatar" className="img-profile" />
-                              </div>
-                              <div className="col-11 ps-3">
-                                <span className="fw-bold">
-                                  {user.first_name === null ? `${user.username}` : `${user.first_name} ${user.last_name}`}
-                                </span>
-                                <br />
-                                <small className="text-muted">
-                                  {user.phone === null ? 'Phone has not been updated' : ''}
-                                </small>
+                        <Link to={`/transfer/input-amount/${user.id}`} className="text-decoration-none text-dark">
+                          <div className="card shadow-sm my-2" id={user} key={String(index)}>
+                            <div className="card-body">
+                              <div className="row">
+                                <div className="col-1">
+                                  <img src={user.picture} alt="avatar" className="img-profile" />
+                                </div>
+                                <div className="col-11 ps-3">
+                                  <span className="fw-bold">
+                                    {user.first_name === null ? `${user.username}` : `${user.first_name} ${user.last_name}`}
+                                  </span>
+                                  <br />
+                                  <small className="text-muted">
+                                    {user.phone === null ? 'Phone has not been updated' : ''}
+                                  </small>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       </>
                     )
                   })

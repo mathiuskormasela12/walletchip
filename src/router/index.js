@@ -88,19 +88,19 @@ function Router() {
         </Navbar>
         <Footer />
       </Route>
-      <Route path="/transfer/input-amount/" exact>
+      <Route path="/transfer/input-amount/:id" exact>
         <Navbar>
           <InputAmount />
         </Navbar>
         <Footer />
       </Route>
-      <Route path="/transfer/input-amount/confirm" exact>
+      <Route path="/transfer/input-amount/:id/confirm" exact>
         <Navbar>
           <Confirmation />
         </Navbar>
         <Footer />
       </Route>
-      <Route path="/transfer/input-amount/confirm/success" exact>
+      <Route path="/transfer/input-amount/:id/confirm/success" exact>
         <Navbar>
           <TransferSuccess />
         </Navbar>

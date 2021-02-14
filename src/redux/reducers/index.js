@@ -9,6 +9,7 @@ import mainReducer from './main'
 import authReducer from './auth'
 import userReducer from './user'
 import registerReducers from './register'
+import transactionReducer from './transaction'
 
 // Persist Cpnfiguration
 const rootPersistConfig = {
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
   main: mainReducer,
   auth: persistReducer(authPersistConfig, authReducer),
   user:  persistReducer(detailUserPersistConfig, userReducer),
-  register: registerReducers
+  register: registerReducers,
+  transaction: transactionReducer
 })
 
 export default persistReducer(rootPersistConfig, rootReducer)
