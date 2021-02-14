@@ -40,12 +40,11 @@ function ChangePIN() {
 
   const submitHandler = event => {
     event.preventDefault()
-    
-    dispatch(validatePin(token, pin))
-    if (!pinValid) {
-      setError('wrong PIN!')
-    } else {
+    if (pinValid) {
       setMessage('Successfully create new PIN')
+    } else {
+      dispatch(validatePin(token, pin))
+      setError('wrong PIN!')
     }
   }
 

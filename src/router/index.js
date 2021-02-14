@@ -11,7 +11,8 @@ import {
 } from '../components'
 
 //import privateRoute
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute'
+import ProtectedRoute from './ProtectedRoute'
 
 // Import Views
 import LandingPage from '../views/LandingPage'
@@ -69,75 +70,63 @@ function Router() {
         <Activated />
       </Route>
       <PrivateRoute exact path='/dashboard' privateComponent={Home} />
-      <PrivateRoute exact path='/dashboard/history' privateComponent={History} />
-      {/* <Route path="/dashboard" exact>
-        <Navbar>
-          <Home />
-        </Navbar>
-        <Footer />
-      </Route> */}
-      {/* <Route path="/dashboard/history">
-        <Navbar>
-          <History />
-        </Navbar>
-        <Footer />
-      </Route> */}
-      <Route path="/transfer" exact>
+      <PrivateRoute path='/dashboard/history' privateComponent={History} />
+      <ProtectedRoute path="/transfer" exact>
         <Navbar>
           <Transfer />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/transfer/input-amount/" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/transfer/input-amount/" exact>
         <Navbar>
           <InputAmount />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/transfer/input-amount/confirm" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/transfer/input-amount/confirm" exact>
         <Navbar>
           <Confirmation />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/transfer/input-amount/confirm/success" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/transfer/input-amount/confirm/success" exact>
         <Navbar>
           <TransferSuccess />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/topup" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/topup" exact>
         <Navbar>
           <TopUp />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/profile" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/profile" exact>
         <Navbar>
           <Profile />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/profile/:username" exact>
+      </ProtectedRoute>
+      <ProtectedRoute path="/profile/:username" exact>
         <Navbar>
           <PersonalInformation />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/profile/:username/change-password">
+      </ProtectedRoute>
+      <ProtectedRoute path="/profile/:username/change-password">
         <Navbar>
           <ChangePassword />
         </Navbar>
         <Footer />
-      </Route>
-      <Route path="/profile/:username/change-pin">
+      </ProtectedRoute>
+      <ProtectedRoute path="/profile/:username/change-pin">
         <Navbar>
           {
             pinValid ? <NewPin /> : <ChangePIN />
           }
         </Navbar>
         <Footer />
-      </Route>
+      </ProtectedRoute>
       <Route path="*">
         <NavbarLanding>
           <LandingPage />
