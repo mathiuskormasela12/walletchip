@@ -23,10 +23,16 @@ const authPersistConfig = {
   statereConciler: hardSet
 }
 
+const detailUserPersistConfig = {
+  key: 'user',
+  storage,
+  statereConciler: hardSet
+}
+
 const rootReducer = combineReducers({
   main: mainReducer,
   auth: persistReducer(authPersistConfig, authReducer),
-  user: userReducer,
+  user:  persistReducer(detailUserPersistConfig, userReducer),
   register: registerReducers
 })
 
