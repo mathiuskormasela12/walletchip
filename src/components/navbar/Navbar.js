@@ -18,10 +18,10 @@ export function Navbar({ children }) {
 
   const logoutHandler = (e) => {
     e.preventDefault()
-    dispatch(logout())
     if (window.confirm("Do you really want to leave?")) {
       history.push('/')
     }
+    dispatch(logout())
   }
 
   return (
@@ -37,7 +37,7 @@ export function Navbar({ children }) {
           <div className="collapse navbar-collapse" id="navbarCollapseContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item d-flex">
-                <img src={user.avatar} alt="avatar" className="img-fluid img-avatar me-3"/>
+                <img src={user.picture} alt="avatar" className="img-fluid img-avatar me-3"/>
                 <Link to="/profile" className="text-center personal-info me-3">
                   <span className="fw-bold">{user.first_name === null ?  `${user.username}` : `${user.first_name} ${user.last_name}`}</span>
                   <br/>

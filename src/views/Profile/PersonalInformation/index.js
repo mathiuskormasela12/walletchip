@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 function PersonalInformation() {
   return (
@@ -37,7 +36,6 @@ function PersonalInformation() {
               <div className="card-body">
                 <small className="text-muted">Phone Number</small> <br />
                 <div className="d-flex align-items-center position-relative justify-content-end">
-                  <Link to="" className="position-absolute text-decoration-none me-3">Manage</Link>
                   <input className="form-control bg-transparent py-2 border-top-0 border-start-0 border-end-0 border-2 outline-none rounded-0 fw-bold" type="text" placeholder="" aria-label="default input example"/>
                 </div>
               </div>

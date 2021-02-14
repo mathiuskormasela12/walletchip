@@ -10,7 +10,7 @@ import './navbarLanding.css'
 
 export function NavbarLanding({ children }) {
   const token = useSelector(state => state.auth.token)
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.userDetail)
   const [navOnShrink, setNavOnShrink] = useState(null)
 
   React.useEffect(() => {
@@ -43,18 +43,18 @@ export function NavbarLanding({ children }) {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {(token !== null) ? (
                 <>
-                  <li className="nav-item d-flex">
-                    <img src={user.avatar} alt="avatar" className="img-fluid img-avatar me-3"/>
+                  <Link to="/profile" className="nav-item d-flex">
+                    <img src={user.picture} alt="avatar" className="img-fluid img-avatar me-3"/>
                     <div className="text-white text-center personal-info me-3">
-                      <h6 className="fw-bold">{`${user.firstName} ${user.lastName}`}</h6>
-                      <small>{user.phone}</small>
+                      <h6 className="fw-bold">{(user.firstName) ? `${user.firstName} ${user.lastName}` : `${user.username}`}</h6>
+                      <small>{(user.phone) ? user.phone : 'Update your phone'}</small>
                     </div>
-                  </li>
+                  </Link>
                   <li className="nav-item dropdown">
                     <a href="#" className="nav-link">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M13.7305 21C13.5547 21.3031 13.3024 21.5547 12.9987 21.7295C12.6951 21.9044 12.3509 21.9965 12.0005 21.9965C11.6501 21.9965 11.3059 21.9044 11.0023 21.7295C10.6987 21.5547 10.4463 21.3031 10.2705 21" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke={navOnShrink ? '#000000' : '#FFFFFF'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M13.7305 21C13.5547 21.3031 13.3024 21.5547 12.9987 21.7295C12.6951 21.9044 12.3509 21.9965 12.0005 21.9965C11.6501 21.9965 11.3059 21.9044 11.0023 21.7295C10.6987 21.5547 10.4463 21.3031 10.2705 21" stroke={navOnShrink ? '#000000' : '#FFFFFF'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </a>
                   </li>

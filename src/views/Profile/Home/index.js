@@ -17,15 +17,15 @@ function Profile() {
     "image/png"
   ]
 
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.userDetail)
   const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
-      avatar: undefined
+      picture: undefined
     },
     validationSchema: Yup.object({
-      avatar: Yup.mixed()
+      picture: Yup.mixed()
                 .required('You must upload an image!')
                 .test('imageSize', 'The maximum image size is only 2MB', value => value && value.size <= IMAGE_SIZE)
                 .test('fileFormat', 'You must upload an image!', value => value && SUPPORTED_FORMATS.includes(value.type))
@@ -37,7 +37,7 @@ function Profile() {
 
   const handleImageInput = (event) => {
     event.preventDefault()
-    formik.setFieldValue('avatar', event.currentTarget.files[0])
+    formik.setFieldValue('picture', event.currentTarget.files[0])
     formik.submitForm()
   }
 
@@ -54,26 +54,32 @@ function Profile() {
       <div style={{ height: 'inherit' }} className="card-body overflow-auto p-5">
         <div className="container text-center">
           <div className="profile-img">
-            <img src={user.avatar} alt="profile"/>
+            <img src={user.picture} alt="profile"/>
             <form id="form-image" className="mt-2 d-flex flex-column">
               {
-                (formik.errors.avatar && formik.touched.avatar) ? (
-                  <small className="text-danger">{formik.errors.avatar}</small>
+                (formik.errors.picture && formik.touched.picture) ? (
+                  <small className="text-danger">{formik.errors.picture}</small>
                 ) : ''
               }
-              <label style={{ cursor: 'pointer', color: '#7A7886' }} htmlFor="avatar">
+              <label style={{ cursor: 'pointer', color: '#7A7886' }} htmlFor="picture">
                 <svg width="13" className="me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                 </svg>
                 
                 <small>Edit</small>
               </label>
-              <input type="file" onChange={handleImageInput} name="avatar" id="avatar"/>
+              <input type="file" onChange={handleImageInput} name="picture" id="picture"/>
             </form>
           </div>
 
-          <h5 style={{ color: '#4D4B57' }} className="fw-bold fs-5 mt-3">{`${user.firstName} ${user.lastName}`}</h5>
-          <p style={{ fontSize: '13px' }}>{user.phone}</p>
+          <h5 style={{ color: '#4D4B57' }} className="fw-bold fs-5 mt-3">{(user.firstName) ? `${user.firstName} ${user.lastName}` : `${user.username}`}</h5>
+          {
+            (user.phone) ? (
+              <p style={{ fontSize: '13px' }}>{user.phone}</p>
+            ) : (
+              <p style={{ fontSize: '13px' }}>Update your phone</p>
+            )
+          }
 
           <div style={{ paddingLeft: '7rem', paddingRight: '7rem' }}>
             <Link to={`/profile/${user.username}`} className="btn btn-profile-navigation p-3 w-100 my-2">
