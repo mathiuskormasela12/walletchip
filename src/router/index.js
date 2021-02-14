@@ -58,7 +58,7 @@ function Router() {
       <Route path="/auth/create-pin/:token">
         <CreatePin />
       </Route>
-      <Route path="/auth/forgot/reset-password">
+      <Route path="/auth/forgot/reset-password/:token">
         <ResetPassword />
       </Route>
       <Route path="/auth/activated/">

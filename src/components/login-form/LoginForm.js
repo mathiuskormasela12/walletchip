@@ -7,6 +7,8 @@ import './LoginForm.css'
 export function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [show, setShow] = useState(false)
+  const [type, setType] = useState('password')
   const dispatch = useDispatch('')
   const msgResponse = useSelector(state => state.auth.message)
   const state = useSelector(state => state.auth.token)
@@ -25,6 +27,15 @@ export function LoginForm() {
     event.preventDefault()
     dispatch(login(email, password))
 
+  }
+  const handleClick =() => {
+    if(!show) {
+      setShow(!show)
+      setType('text')
+    } else {
+      setShow(!show)
+      setType('password')
+    }
   }
 
   useEffect(() => {
@@ -76,8 +87,8 @@ export function LoginForm() {
                 </div>
                 <div className="mt-5 position-relative d-flex align-items-center">
                   <i className="far fa-unlock-alt position-absolute text-muted ms-2"></i>
-                  <i className="far fa-eye-slash position-absolute text-muted eye-icon"></i>
-                  <input type="password" className="form-control border-top-0 border-start-0 border-2 rounded-0 outline-none border-end-0 ps-5 form-change-password" id="password" onChange={event => handleChange(event)} placeholder="Enter Your Password" />
+                  <i className="far fa-eye-slash position-absolute text-muted eye-icon" onClick={handleClick}></i>
+                  <input type={type} className="form-control border-top-0 border-start-0 border-2 rounded-0 outline-none border-end-0 ps-5 form-change-password" id="password" onChange={event => handleChange(event)} placeholder="Enter Your Password" />
                 </div>
                 <div className="row mt-3">
                   <Link to="/auth/forgot/" className="text-end fw-bold text-decoration-none"><small>Forgot Password?</small></Link>
