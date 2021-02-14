@@ -10,10 +10,10 @@ import { Footer, Navbar } from '../../../components'
 import './home.css'
 
 function Home() {
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.userDetail)
   
   React.useEffect(() => {
-    document.title = `${user.firstName}'s Dashboard - Walletchip`
+    document.title = `${user.first_name}'s Dashboard - Walletchip`
   }, [])
 
   return (
