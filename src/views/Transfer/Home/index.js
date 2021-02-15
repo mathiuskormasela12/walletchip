@@ -123,7 +123,7 @@ function Transfer() {
                                   </span>
                                   <br />
                                   <small className="text-muted">
-                                    {user.phone === null ? 'Phone has not been updated' : ''}
+                                    {user.phone === null ? 'Phone has not been updated' : `${user.phone}`}
                                   </small>
                                 </div>
                               </div>

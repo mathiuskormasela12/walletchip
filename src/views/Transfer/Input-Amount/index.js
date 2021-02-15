@@ -99,7 +99,7 @@ function InputAmount() {
                   </div>
                   <div className="d-flex justify-content-end mt-4 mb-2">
                     
-                      <button className="btn btn-blue fw-bold text-white border border-2 rounded-2 text-end"><Link to={`/transfer/input-amount/${id}/confirm`}>Continue</Link></button>
+                      <button className="btn btn-blue fw-bold text-white border border-2 rounded-2 text-end"><Link to={`/transfer/input-amount/${id}/confirm`} className="text-decoration-none text-white">Continue</Link></button>
                     
                   </div>
                 </div>
